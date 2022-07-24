@@ -1,0 +1,110 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide circle
+
+package Game {
+
+abstract class Player {
+  - name : String
+  - balance : int
+  - hand : Hand
+  - bet : int
+  - busted : bool
+  + leave()
+  + join()
+  + placeBet()
+  + Player(name : String, balance : int)
+  + toString() : String
+}
+
+class Dealer {
+  - name : String
+  - balance : int
+  - hand : Hand
+  - deck : Hand
+  - bet : int
+  - busted : bool
+  + initializeCards()
+  + placeBet()
+  + takeBet()
+  + dealCard()
+  + dealTest()
+  + Dealer(name : String, balance : int)
+  + toString() : String
+}
+
+class Card {
+  - value : int
+  - suite : Suite
+  + Card(suite : Suite, number : Number, value : int)
+}
+
+class Ace {
+  - value :int
+  - suite Suite
+  + Ace(suite : Suite, number : Number, value : int)
+}
+
+class Hand {
+  - hand : ArrayList<Card>
+  + addCard(card : Card)
+}
+
+enum Suite{
+"Clubs, 
+Hearts, 
+Spades, 
+Diamonds"
+}
+
+class Options{
+  + hit()
+  + stand()
+  + doubledown()
+  + split()
+}
+
+class Check{
+  + countCards()
+  + checkActivity()
+  + checkBalance()
+  + countVal()
+  + bust()
+  + win()
+  + natBJ()
+}
+
+class Bot{}
+
+class Normal{}
+class highRisk{}
+class lowRisk{}
+
+}
+
+package Web{
+
+class Update{
+  + printPlayerBet()
+  + printHandValues()
+  + displayOptions()
+  + displayBalance()
+
+}
+
+}
+
+class BlackJack {
+  + {static} main(args : String[])
+}
+
+Options - Update
+Suite - Card
+Player <|-- Dealer
+Card <|-- Ace
+Bot <|-- Normal
+Bot <|-- highRisk
+Bot <|-- lowRisk
+
+
+@enduml
