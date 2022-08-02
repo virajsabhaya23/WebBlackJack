@@ -49,8 +49,11 @@ public class Dealer extends Player {
     }
 
     public Hand decks;
+    public Hand hand = new Hand();
     public int num_decks;
     public int balance;
     public int bet;
+    public int value;
+    public int ace;
 
 }
