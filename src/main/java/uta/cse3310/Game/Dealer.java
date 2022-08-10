@@ -48,6 +48,17 @@ public class Dealer extends Player {
         player.bet = 0;
     }
 
+    public void shuffle(Player player) {
+        for (Card c : player.hand.hand) {
+            decks.addCard(c);
+            player.hand.discardCard(c);
+        }
+        for (Card c : player.hand.hand) {
+            decks.addCard(c);
+            hand.discardCard(c);
+        }
+    }
+
     public Hand decks;
     public Hand hand = new Hand();
     public int num_decks;

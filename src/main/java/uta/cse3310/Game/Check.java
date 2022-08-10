@@ -53,6 +53,32 @@ public class Check {
         return player.value;
     }
 
+    public static void doubled(Dealer dealer, Player player) {
+        if (dealer.value < 17) {
+            dealer.dealCard(dealer.hand);
+        }
+
+        count(player, dealer);
+
+        if (dealer.value >= 21 && player.value <= 21) {
+            win(dealer, player);
+            player.busted = true;
+            print_cards(dealer, player);
+            System.out.println("Dealer Bust, You Win!");
+        }
+        if (dealer.value != 21 && player.value == 21) {
+            win(dealer, player);
+            player.busted = true;
+            print_cards(dealer, player);
+            System.out.println("BlackJack, You Win!");
+        } else {
+            bust(dealer, player);
+            print_cards(dealer, player);
+            System.out.println("You Lose");
+            player.busted = true;
+        }
+    }
+
     public static void bust(Dealer dealer, Player player) {
         dealer.takeBet(player);
         player.busted = true;

@@ -30,12 +30,16 @@ public class WebBlackJack {
                 Dealer dealer = new Dealer("Dealer", num);
                 dealer.initializeCards();
                 Player player = new Player("P1");
-                for (int j = 0; j < 2; j++) {
-                        dealer.dealCard(player.hand);
 
-                }
                 dealer.dealCard(dealer.hand);
                 while (play == true) {
+                        dealer.shuffle(player);
+
+                        for (int j = 0; j < 2; j++) {
+                                dealer.dealCard(player.hand);
+
+                        }
+
                         Scanner scn = new Scanner(System.in);
 
                         while (player.busted == false) {
@@ -52,22 +56,30 @@ public class WebBlackJack {
 
                                         if (in == 1) {
                                                 Options.hit(dealer, player);
+                                                Check.count(player, dealer);
+                                                Check.check_val(dealer, player);
                                         } else if (in == 2) {
                                                 Options.stand(player);
+                                                Check.count(player, dealer);
+                                                Check.check_val(dealer, player);
                                         } else if (in == 3) {
-                                                Options.doubledown(player);
+                                                Options.doubledown(dealer, player);
                                         } else if (in == 4) {
                                                 Options.split(player);
+                                                Check.count(player, dealer);
+                                                Check.check_val(dealer, player);
                                         }
-                                        Check.count(player, dealer);
-
-                                        Check.check_val(dealer, player);
 
                                         // Gson gson = new Gson();
                                         // String json = gson.toJson(deck.hand.get(i));
                                         // String data = "{'suite': 'Hearts','number': 'Queen','value': 10 }";
                                         // System.out.print(data);
                                         // Gson.fromJson(data, Card.class);
+                                }
+                                System.out.println("Continue?\n1.YES\n2.NO\n");
+                                in = scn.nextInt();
+                                if (in == 1) {
+                                        player.busted = false;
                                 }
 
                         }
