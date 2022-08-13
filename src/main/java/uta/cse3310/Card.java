@@ -1,4 +1,4 @@
-package uta.cse3310.Game;
+package uta.cse3310;
 
 public class Card {
     public Card(Suite suite, Num n, int value) {
@@ -33,3 +33,5 @@ public class Card {
 // I used two enumerations for the card identiification and I used a serperate
 // integer value for the value of the card since face card and aces dont map
 // exactly to their order
+
+

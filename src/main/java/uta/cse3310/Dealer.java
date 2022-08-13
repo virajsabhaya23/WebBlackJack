@@ -1,6 +1,6 @@
-package uta.cse3310.Game;
+package uta.cse3310;
 
-public class Dealer extends Player
+public class Dealer extends Player 
 {
     public Hand decks;
     public Hand hand = new Hand();
@@ -9,24 +9,18 @@ public class Dealer extends Player
     public int bet;
     public int value;
     public int ace;
-
-    public Dealer(String name, int num) 
-    {
+    public Dealer(String name, int num) {
         super(name);
         this.num_decks = num;
     }
 
-    public void initializeCards() 
-    {
+    public void initializeCards() {
         int j;
         Hand hand = new Hand();
-        for (int i = 0; i < num_decks; i++) 
-        {
-            for (Suite s : Suite.values()) 
-            {
+        for (int i = 0; i < num_decks; i++) {
+            for (Suite s : Suite.values()) {
                 j = 2;
-                for (Num n : Num.values()) 
-                {
+                for (Num n : Num.values()) {
                     Card card = new Card(s, n, j);
                     hand.addCard(card);
                     j++;
@@ -34,42 +28,30 @@ public class Dealer extends Player
             }
         }
         decks = hand;
-        for (Card c : decks.hand) 
-        {
-            if (c.getNumber() == Num.Jack || c.getNumber() == Num.Queen || c.getNumber() == Num.King) 
-            {
+        for (Card c : decks.hand) {
+            if (c.getNumber() == Num.Jack || c.getNumber() == Num.Queen || c.getNumber() == Num.King) {
                 c.setValue(10);
             }
         }
     }
 
-    public void dealCard(Hand player) 
-    {
+    public void dealCard(Hand player) {
         int i = (int) (Math.random() * ((num_decks * (decks.hand.size())))) + 1;
         player.addCard(decks.hand.get(i));
         decks.discardCard(decks.hand.get(i));
+
     }
 
-    public void placeBet(int bet) 
-    {
-        this.bet += bet;
-        this.balance -= bet;
-    }
-
-    public void takeBet(Player player) 
-    {
+    public void takeBet(Player player) {
         this.balance += player.bet;
         this.bet -= player.bet;
         player.bet = 0;
     }
 
-    public void winBet(Player player) 
-    {
+    public void winBet(Player player) {
         this.bet -= player.bet;
         player.balance += ((player.bet) * 2);
         player.bet = 0;
     }
-
-    
 
 }

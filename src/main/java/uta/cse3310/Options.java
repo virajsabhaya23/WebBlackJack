@@ -1,11 +1,8 @@
 
 package uta.cse3310;
 
-import uta.cse3310.Game.*;
-
 public class Options {
-    public static void hit(Dealer dealer, Player player) 
-    {
+    public static void hit(Dealer dealer, Player player) {
         dealer.dealCard(player.hand);
         player.round = false;
     }

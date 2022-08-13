@@ -1,4 +1,4 @@
-package uta.cse3310.Game;
+package uta.cse3310;
 
 import java.util.ArrayList;
 
