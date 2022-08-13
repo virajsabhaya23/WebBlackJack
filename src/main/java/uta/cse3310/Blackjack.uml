@@ -5,49 +5,53 @@ hide circle
 package Game {
 
 abstract class Player {
-  - name : String
-  - balance : int
-  - hand : Hand
-  - bet : int
-  - busted : bool
+  + balance : int
+  + hand : Hand
+  + bet : int
+  + value : int
+  + ace : int
+  + busted : bool
+  + round : bool
   + leave()
   + join()
   + placeBet()
   + Player(name : String, balance : int)
-  + toString() : String
 }
 
 class Dealer {
-  - name : String
-  - balance : int
-  - hand : Hand
-  - deck : Hand
-  - bet : int
-  - busted : bool
+  + name : String
+  + balance : int
+  + hand : Hand
+  + decks : Hand
+  + bet : int
+  + busted : bool
+  + num_decks : int
+  + value : int
+  + ace : int
   + initializeCards()
   + placeBet()
   + takeBet()
+  + winBet()
   + dealCard()
   + dealTest()
   + Dealer(name : String, balance : int)
-  + toString() : String
 }
 
 class Card {
   - value : int
   - suite : Suite
+  - number : Num
   + Card(suite : Suite, number : Number, value : int)
-}
-
-class Ace {
-  - value :int
-  - suite Suite
-  + Ace(suite : Suite, number : Number, value : int)
+  + getSuite() suite : Suite
+  + getNumber() number : Num
+  + getValue()  value : int
+  + setValue()
 }
 
 class Hand {
-  - hand : ArrayList<Card>
+  + hand : ArrayList<Card>
   + addCard(card : Card)
+  + discardCard(card : Card)
 }
 
 enum Suite{
@@ -58,31 +62,21 @@ Diamonds"
 }
 
 class Options{
-  + hit()
+  + hit(dealer : Dealer, player : Player)
   + stand()
-  + doubledown()
-  + split()
+  + doubledown(dealer : Dealer, player : Player)
 }
 
 class Check{
-  + countCards()
-  + checkActivity()
-  + checkBalance()
-  + countVal()
-  + bust()
-  + win()
-  + natBJ()
+  + check_val(dealer : Dealer, player : Player)
+  + print_cards(dealer : Dealer, player : Player)
+  + count(player : Player, dealer Dealer)
+  + bust(dealer : Dealer, player : Player)
+  + win(dealer : Dealer, player : Player)
 }
 
-class Bot{}
 
-class Normal{}
-class highRisk{}
-class lowRisk{}
-
-}
-
-package Web{
+package webapp{
 
 class Update{
   + printPlayerBet()
@@ -94,7 +88,7 @@ class Update{
 
 }
 
-class BlackJack {
+class WebBlackJack {
   + {static} main(args : String[])
 }
 
