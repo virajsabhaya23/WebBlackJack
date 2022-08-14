@@ -12,11 +12,17 @@ public class CheckTest {
         final Dealer dealer = new Dealer("name", 0);
         final Player player = new Player("name");
 
+        
         // Run the test
-        final int result = Check.check_val(dealer, player);
+        while(player.value < 21)
+        {
+            Options.hit(dealer, player);
+        }
+        
+        final int result = player.value;
 
         // Verify the results
-        assertEquals(0, result);
+        assertEquals(Check.check_val(dealer, player), result);
     }
 
     @Test
@@ -24,23 +30,56 @@ public class CheckTest {
         // Setup
         final Dealer dealer = new Dealer("name", 0);
         final Player player = new Player("name");
+        final int balance = player.balance;
+        boolean result;
 
         // Run the test
-        Check.bust(dealer, player);
+        while(player.busted == false)
+        {
+            Options.hit(dealer, player);
+            Check.bust(dealer, player);
+        }
+
+        if(balance > player.balance)
+        {
+            result = true;
+        }
+        else
+        {
+            result = false;
+        }
 
         // Verify the results
+        assertEquals(player.busted, result);
     }
 
     @Test
     public void testWin() {
-        // Setup
-        final Dealer dealer = new Dealer("name", 0);
-        final Player player = new Player("name");
-
-        // Run the test
-        Check.win(dealer, player);
-
-        // Verify the results
+         // Setup
+         final Dealer dealer = new Dealer("name", 0);
+         final Player player = new Player("name");
+         final int balance = player.balance;
+         boolean result;
+ 
+         // Run the test
+         while(player.busted == false)
+         {
+             Options.hit(dealer, player);
+             Check.bust(dealer, player);
+         }
+ 
+         if(balance < player.balance)
+         {
+             result = true;
+         }
+         else
+         {
+             result = false;
+         }
+ 
+         // Verify the results
+         assertEquals(player.busted, result);
+     
     }
 
     @Test
@@ -49,21 +88,35 @@ public class CheckTest {
         final Dealer dealer = new Dealer("name", 0);
         final Player player = new Player("name");
 
+        
         // Run the test
+        while(player.value < 21)
+        {
+            Options.hit(dealer, player);
+        }
+        
+        final int result = player.value;
         Check.print_cards(dealer, player);
 
         // Verify the results
+        assertEquals(Check.check_val(dealer, player), result);
     }
 
     @Test
     public void testCount() {
         // Setup
-        final Player player = new Player("name");
         final Dealer dealer = new Dealer("name", 0);
+        final Player player = new Player("name");
 
+        
         // Run the test
-        Check.count(player, dealer);
+        while(player.value < 21)
+        {
+            Options.hit(dealer, player);
+        }
+        
+        final int result = player.value;
 
         // Verify the results
-    }
+        assertEquals(Check.check_val(dealer, player), result);
 }
