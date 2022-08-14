@@ -1,4 +1,4 @@
-package uta.cse3310;
+package uta.cse3310.Game;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -10,7 +10,7 @@ public class Player {
     boolean ready = false;
     boolean folded = false;
     boolean swapping = false;
-    uta.cse3310.Card Cards[];
+    uta.cse3310.Game.Card Cards[];
     String LastMessageToPlayer;
 
 

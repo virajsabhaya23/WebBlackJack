@@ -1,4 +1,4 @@
-package uta.cse3310;
+package uta.cse3310.Game;
 
 public class Card {
     public Card(Suite suite, Num n, int value) {

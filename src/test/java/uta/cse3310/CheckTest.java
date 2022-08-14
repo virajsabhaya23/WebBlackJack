@@ -1,5 +1,6 @@
 package uta.cse3310;
 import org.junit.Test;
+import uta.cse3310.Game.*;
 
 import static org.junit.Assert.assertEquals;
 

@@ -13,7 +13,7 @@ public class UserEvent {
         }
     };
 
-    UserEventType event;
+    public UserEventType event;
     int playerID;
     String name, move;
     boolean status;

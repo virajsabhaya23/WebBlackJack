@@ -1,4 +1,4 @@
-package uta.cse3310;
+package uta.cse3310.Game;
 
 public class Dealer extends Player 
 {

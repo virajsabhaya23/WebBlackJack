@@ -1,4 +1,4 @@
-package uta.cse3310;
+package uta.cse3310.Game;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;

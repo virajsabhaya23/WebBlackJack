@@ -1,7 +1,8 @@
-package uta.cse3310;
+package uta.cse3310.Game;
 
 import java.util.ArrayList;
 
+import uta.cse3310.UserEvent;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;

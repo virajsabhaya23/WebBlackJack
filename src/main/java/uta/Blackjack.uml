@@ -1,0 +1,104 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide circle
+
+package Game {
+
+abstract class Player {
+  + balance : int
+  + hand : Hand
+  + bet : int
+  + value : int
+  + ace : int
+  + busted : bool
+  + round : bool
+  + leave()
+  + join()
+  + placeBet()
+  + Player(name : String, balance : int)
+}
+
+class Dealer {
+  + name : String
+  + balance : int
+  + hand : Hand
+  + decks : Hand
+  + bet : int
+  + busted : bool
+  + num_decks : int
+  + value : int
+  + ace : int
+  + initializeCards()
+  + placeBet()
+  + takeBet()
+  + winBet()
+  + dealCard()
+  + dealTest()
+  + Dealer(name : String, balance : int)
+}
+
+class Card {
+  - value : int
+  - suite : Suite
+  - number : Num
+  + Card(suite : Suite, number : Number, value : int)
+  + getSuite() suite : Suite
+  + getNumber() number : Num
+  + getValue()  value : int
+  + setValue()
+}
+
+class Hand {
+  + hand : ArrayList<Card>
+  + addCard(card : Card)
+  + discardCard(card : Card)
+}
+
+enum Suite{
+"Clubs, 
+Hearts, 
+Spades, 
+Diamonds"
+}
+
+class Options{
+  + hit(dealer : Dealer, player : Player)
+  + stand()
+  + doubledown(dealer : Dealer, player : Player)
+}
+
+class Check{
+  + check_val(dealer : Dealer, player : Player)
+  + print_cards(dealer : Dealer, player : Player)
+  + count(player : Player, dealer Dealer)
+  + bust(dealer : Dealer, player : Player)
+  + win(dealer : Dealer, player : Player)
+}
+
+
+package webapp{
+
+class Update{
+  + printPlayerBet()
+  + printHandValues()
+  + displayOptions()
+  + displayBalance()
+
+}
+
+}
+
+class WebBlackJack {
+  + {static} main(args : String[])
+}
+
+Options - Update
+Suite - Card
+Player <|-- Dealer
+Card <|-- Ace
+Bot <|-- Normal
+Bot <|-- highRisk
+Bot <|-- lowRisk
+
+
+@enduml

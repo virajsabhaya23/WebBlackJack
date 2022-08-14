@@ -2,6 +2,8 @@ package uta.cse3310;
 
 import org.junit.Before;
 import org.junit.Test;
+import uta.cse3310.Game.*;
+import uta.cse3310.Game.Dealer;
 
 public class DealerTest {
 
